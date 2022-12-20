@@ -1,0 +1,18 @@
+-------------------------------
+            CHECK
+     Tue Dec 20 21:41:18 
+-------------------------------
+   BREAD     2,13 x 5    10,64
+    5% discount (loyalty card)
+    SALT     0,74 x 4     2,96
+    5% discount (loyalty card)
+   SUGAR     3,49 x 6    20,95
+      10% discount (promotion)
+    RICE     4,79 x 5    23,94
+      10% discount (promotion)
+-------------------------------
+               TOTAL     64,20
+      total discount      5,70
+-------------------------------
+THANK YOU FOR CHOOSING OUR SHOP
+-------------------------------

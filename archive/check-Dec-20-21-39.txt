@@ -1,0 +1,18 @@
+-------------------------------
+            CHECK
+     Tue Dec 20 21:39:40 
+-------------------------------
+    SALT     0,74 x 1     0,74
+    5% discount (loyalty card)
+ CHICKEN     7,74 x 5    38,71
+    5% discount (loyalty card)
+   SUGAR     3,49 x 5    17,46
+      10% discount (promotion)
+  COFFEE    12,06 x 2    24,11
+    5% discount (loyalty card)
+-------------------------------
+               TOTAL     86,31
+      total discount      5,29
+-------------------------------
+THANK YOU FOR CHOOSING OUR SHOP
+-------------------------------
