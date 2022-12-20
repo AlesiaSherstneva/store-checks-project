@@ -27,7 +27,7 @@
 ![project-image-1](pictures/img_1.gif)
 
 Также можно напрямую запустить скомпилированный класс `CheckRunner.class` из папки `out\production\classes` 
-командой: `java by.myshop.CheckRunner` + аргументы.
+командой: `java CheckRunner` + аргументы.
 
 Отчет покрытия тестами (JaCoCo):
 ![img.png](pictures/img_2.png)
