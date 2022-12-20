@@ -1,0 +1,81 @@
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'jacoco'
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+}
+
+group 'by.myshop'
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:3.0.0'
+    }
+}
+
+dependencies {
+    testImplementation 'commons-io:commons-io:2.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'com.ginsberg:junit5-system-exit:1.1.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+shadowJar {
+    archiveBaseName.set('CheckRunner')
+    archiveVersion.set('1.0')
+    archiveClassifier.set('')
+    archiveName("CheckRunner.jar")
+    //noinspection GroovyAssignabilityCheck
+    manifest {
+        attributes 'Main-Class': 'by.myshop.CheckRunner'
+    }
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
+}
+
+tasks.build.dependsOn tasks.shadowJar
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
