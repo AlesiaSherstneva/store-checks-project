@@ -1,0 +1,18 @@
+-------------------------------
+            CHECK
+     Wed Dec 21 19:36:58 
+-------------------------------
+   SUGAR     3,49 x 8    27,92
+      10% discount (promotion)
+    EGGS     3,28 x 3     9,84
+    5% discount (loyalty card)
+    BEER     4,12 x 5    20,60
+    5% discount (loyalty card)
+    RICE     4,79 x 5    23,95
+      10% discount (promotion)
+-------------------------------
+               TOTAL     82,31
+      total discount      7,38
+-------------------------------
+THANK YOU FOR CHOOSING OUR SHOP
+-------------------------------

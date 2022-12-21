@@ -13,7 +13,7 @@ public class CheckWriter {
         boolean mkdir = new File(path).mkdir();
 
         try (FileWriter fileWriter = new FileWriter(path + "check" +
-                new Date().toString().substring(3, 16)
+                new Date().toString().substring(3, 19)
                         .replaceAll(" ", "-")
                         .replaceAll(":", "-")
                 + ".txt")) {

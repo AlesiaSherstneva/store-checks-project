@@ -38,7 +38,7 @@ shadowJar {
     archiveName("CheckRunner.jar")
     //noinspection GroovyAssignabilityCheck
     manifest {
-        attributes 'Main-Class': 'by.myshop.CheckRunner'
+        attributes 'Main-Class': 'CheckRunner'
     }
 }
 

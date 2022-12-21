@@ -1,0 +1,16 @@
+-------------------------------
+            CHECK
+     Wed Dec 21 19:36:46 
+-------------------------------
+   SUGAR     3,49 x 8    27,92
+      10% discount (promotion)
+    EGGS     3,45 x 3   10,35
+    BEER     4,34 x 5   21,70
+    RICE     4,79 x 5    23,95
+      10% discount (promotion)
+-------------------------------
+               TOTAL     83,92
+      total discount      5,77
+-------------------------------
+THANK YOU FOR CHOOSING OUR SHOP
+-------------------------------

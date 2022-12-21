@@ -19,7 +19,7 @@
 
 Чтобы запустить проект, нужно собрать его с помощью команды `gradle clean test build`. Расположение проекта на
 моем компьютере: `D:\work\repository\test-project`. Нужно создать такую же структуру папок, или исправить 
-пути в классах `CheckWriter`, `CheckWriterTest`, `InputFileReaderTest`.
+пути в классах `CheckWriter`, `CheckWriterTest`, `InputFileReader`, `InputFileReaderTest`.
 
 Собранный файл `gradle` положит в папку `build\libs`, откуда его можно запустить командой 
 `java -jar CheckRunner.jar`, добавив аргументы.

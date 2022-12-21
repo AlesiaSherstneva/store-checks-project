@@ -1,0 +1,16 @@
+-------------------------------
+            CHECK
+     Wed Dec 21 19:37:25 
+-------------------------------
+    SALT     0,74 x 3     2,22
+    5% discount (loyalty card)
+   SUGAR     3,49 x 5    17,45
+      10% discount (promotion)
+ CHICKEN     7,74 x 1     7,74
+    5% discount (loyalty card)
+-------------------------------
+               TOTAL     27,41
+      total discount      2,48
+-------------------------------
+THANK YOU FOR CHOOSING OUR SHOP
+-------------------------------

@@ -15,7 +15,7 @@ public class CheckPrinter {
         List<Product> productListWithoutDiscount = new ProductsFactory().getSupplies(shopping);
         List<Product> productListWithDiscount = new ArrayList<>();
 
-        double total = TotalCounter.countTotalSum(productListWithoutDiscount);
+        double totalDiscount = TotalCounter.countTotalSum(productListWithoutDiscount);
 
         for (Product product : productListWithoutDiscount) {
             if (product.getCount() >= 5 && product.isOnSale()) {
@@ -25,8 +25,8 @@ public class CheckPrinter {
             }
             productListWithDiscount.add(product);
         }
-
-        double totalDiscount = total - TotalCounter.countTotalSum(productListWithDiscount);
+        double total = TotalCounter.countTotalSum(productListWithDiscount);
+        totalDiscount -= total;
 
         return new CheckMaker().getCheck(productListWithDiscount, total, totalDiscount).toString();
     }

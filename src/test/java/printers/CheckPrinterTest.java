@@ -24,7 +24,7 @@ class CheckPrinterTest {
         CheckPrinter printer = new CheckPrinter();
         String testCheck = printer.printCheck(shopping, true);
         assertEquals("5% discount (loyalty card)", testCheck.substring(143, 169));
-        assertEquals(2.20, Double.parseDouble(testCheck.substring(383, 387).replace(",", ".")));
+        assertEquals(2.21, Double.parseDouble(testCheck.substring(383, 387).replace(",", ".")));
     }
 
     @Test
@@ -33,7 +33,7 @@ class CheckPrinterTest {
         String testCheck = printer.printCheck(shopping, false);
         assertNotEquals("5% discount (loyalty card)", testCheck.substring(143, 169));
         assertEquals("10% discount (promotion)", testCheck.substring(175, 199));
-        assertEquals(1.94, Double.parseDouble(testCheck.substring(319, 324).replace(",", ".")));
+        assertEquals(1.95, Double.parseDouble(testCheck.substring(319, 324).replace(",", ".")));
     }
 
     @Test
