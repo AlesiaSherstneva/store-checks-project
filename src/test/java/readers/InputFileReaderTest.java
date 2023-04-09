@@ -2,20 +2,15 @@ package readers;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputFileReaderTest {
-    String fileName;
-
     @Test
     void readFileTest() {
-        InputFileReader.path = "D:" + File.separator + "work" + File.separator + "repository" + File.separator
-                + "store-checks-project" + File.separator + "src" + File.separator + "test" + File.separator
-                + "resources" + File.separator;
-        fileName = "input.txt";
-        String[] input = InputFileReader.readFile(fileName);
+        InputFileReader.path = InputFileReader.path.replaceAll("main", "test");
+
+        String[] input = InputFileReader.readFile("input.txt");
+
         assertEquals(6, input.length);
         assertEquals("card-1234", input[5]);
     }

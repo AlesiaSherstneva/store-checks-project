@@ -1,40 +1,42 @@
 package printers;
 
+import enums.ProductName;
 import models.products.Product;
 import util.ProductsFactory;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CheckMakerTest {
     List<Product> productList;
-    double total, totalDiscount;
+    Map<Integer, Integer> shopping;
+    ProductsFactory productsFactory;
 
-    @BeforeEach
-    void setUp() {
+    double total = 98.17, totalDiscount;
+
+    public CheckMakerTest() {
         productList = new ArrayList<>();
-        Map<Integer, Integer> shopping = new HashMap<>();
+
+        shopping = new HashMap<>();
         shopping.put(11, 5);
         shopping.put(13, 8);
-        ProductsFactory productsFactory = new ProductsFactory();
-        productList.addAll(productsFactory.getSupplies(shopping));
-        total = 98.17;
-    }
 
+        productsFactory = new ProductsFactory();
+        productList.addAll(productsFactory.getSupplies(shopping));
+    }
 
     @Test
     void getCheckTest() {
-        CheckMaker testCheckMaker = new CheckMaker();
-        StringBuilder testCheck = testCheckMaker.getCheck(productList, total, totalDiscount);
+        StringBuilder testCheck = new CheckMaker().getCheck(productList, total, totalDiscount);
 
         assertNotNull(testCheck);
-        assertEquals("COFFEE", testCheck.substring(110, 116));
-        assertEquals("BEER", testCheck.substring(142, 146));
-        assertEquals(98.17, Double.parseDouble(testCheck.substring(225, 230).replace(",", ".")));
-        assertEquals(0.00, Double.parseDouble(testCheck.substring(257, 261).replace(",", ".")));
+
+        assertTrue(testCheck.toString().contains(ProductName.COFFEE.name()));
+        assertTrue(testCheck.toString().contains(ProductName.BEER.name()));
+
+        assertTrue(testCheck.toString().contains(String.format("%.2f", total)));
+        assertTrue(testCheck.toString().contains(String.format("%.2f", totalDiscount)));
     }
 }

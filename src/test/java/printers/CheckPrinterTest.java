@@ -1,5 +1,6 @@
 package printers;
 
+import enums.ProductName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,41 +9,68 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CheckPrinterTest {
-    Map<Integer, Integer> shopping;
+public class CheckPrinterTest {
+    private final CheckPrinter printer;
+
+    private String testCheck;
+    private Map<Integer, Integer> shopping;
+
+    double price, discount;
+
+    public CheckPrinterTest() {
+        printer = new CheckPrinter();
+    }
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         shopping = new LinkedHashMap<>();
-        shopping.put(1, 2);
-        shopping.put(2, 5);
-        shopping.put(3, 1);
     }
 
     @Test
-    void checkWithDiscountCardTest() {
-        CheckPrinter printer = new CheckPrinter();
-        String testCheck = printer.printCheck(shopping, true);
-        assertEquals("5% discount (loyalty card)", testCheck.substring(143, 169));
-        assertEquals(2.21, Double.parseDouble(testCheck.substring(383, 387).replace(",", ".")));
+    public void checkWithDiscountCardTest() {
+        shopping.put(8, 1);
+
+        testCheck = printer.printCheck(shopping, true);
+
+        assertTrue(testCheck.contains("5% discount (loyalty card)"));
+        assertFalse(testCheck.contains("10% discount (promotion)"));
+
+        price = ProductName.PASTA.getPrice() * shopping.get(8) * 0.95;
+        assertTrue(testCheck.contains(String.format("%.2f",  price)));
+
+        discount = ProductName.PASTA.getPrice() * shopping.get(8) - price;
+        assertTrue(testCheck.contains(String.format("%.2f", discount)));
     }
 
     @Test
-    void checkWithoutDiscountCardTest() {
-        CheckPrinter printer = new CheckPrinter();
-        String testCheck = printer.printCheck(shopping, false);
-        assertNotEquals("5% discount (loyalty card)", testCheck.substring(143, 169));
-        assertEquals("10% discount (promotion)", testCheck.substring(175, 199));
-        assertEquals(1.95, Double.parseDouble(testCheck.substring(319, 324).replace(",", ".")));
+    public void checkWithPromotionDiscountTest() {
+        shopping.put(10, 5);
+
+        testCheck = printer.printCheck(shopping, false);
+
+        assertFalse(testCheck.contains("5% discount (loyalty card)"));
+        assertTrue(testCheck.contains("10% discount (promotion)"));
+
+        price = ProductName.TEA.getPrice() * shopping.get(10) * 0.9;
+        assertTrue(testCheck.contains(String.format("%.2f",  price)));
+
+        discount = ProductName.TEA.getPrice() * shopping.get(10) - price;
+        assertTrue(testCheck.contains(String.format("%.2f", discount)));
     }
 
     @Test
-    void checkWithoutAllDiscountsTest() {
+    public void checkWithoutAllDiscountsTest() {
         shopping.put(2, 4);
-        CheckPrinter printer = new CheckPrinter();
-        String testCheck = printer.printCheck(shopping, false);
-        assertNotEquals("5% discount (loyalty card)", testCheck.substring(143, 169));
-        assertNotEquals("10% discount (promotion)", testCheck.substring(175, 199));
-        assertEquals(0.00, Double.parseDouble(testCheck.substring(287, 291).replace(",", ".")));
+
+        testCheck = printer.printCheck(shopping, false);
+
+        assertFalse(testCheck.contains("5% discount (loyalty card)"));
+        assertFalse(testCheck.contains("10% discount (promotion)"));
+
+        price = ProductName.SUGAR.getPrice() * shopping.get(2);
+        assertTrue(testCheck.contains(String.format("%.2f",  price)));
+
+        discount = ProductName.SUGAR.getPrice() * shopping.get(2) - price;
+        assertTrue(testCheck.contains(String.format("%.2f", discount)));
     }
 }

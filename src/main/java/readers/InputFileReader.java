@@ -3,12 +3,21 @@ package readers;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class InputFileReader {
     static StringBuilder result;
-    static String path = "D:" + File.separator + "work" + File.separator + "repository" + File.separator
-            + "store-checks-project" + File.separator + "src" + File.separator + "main" + File.separator
-            + "resources" + File.separator;
+    static String path;
+
+    static {
+        try {
+            File dir = new File("");
+            path = String.format("%s%s%s%s%s%s%s%s", dir.getCanonicalPath(), File.separator, "src",
+                    File.separator, "main", File.separator, "resources", File.separator);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
 
     public static String[] readFile(String fileName) {
         result = new StringBuilder();
@@ -18,7 +27,7 @@ public class InputFileReader {
                 result.append(inputLine);
                 inputLine = bufferedReader.readLine();
             }
-        } catch (Exception e) {
+        } catch (IOException exception) {
             System.out.println("File cannot be read!");
             System.exit(1);
         }
