@@ -1,4 +1,5 @@
-# test-project
+# store-checks-project (test task)
+
 Приложение, реализующее функционал формирования чека в магазине.  
 Использованные технологии: Java 17 SE, Gradle 7.5.
 

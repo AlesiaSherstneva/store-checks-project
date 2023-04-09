@@ -25,7 +25,7 @@ class CheckWriterTest {
         shopping.put(8, 1);
         testCheck = new CheckPrinter().printCheck(shopping, true);
         CheckWriter.path = "D:" + File.separator + "work" + File.separator + "repository"
-                + File.separator + "test-project" + File.separator + "src" + File.separator
+                + File.separator + "store-checks-project" + File.separator + "src" + File.separator
                 + "test" + File.separator + "resources" + File.separator + "archive" + File.separator;
         file = new File(CheckWriter.path);
     }

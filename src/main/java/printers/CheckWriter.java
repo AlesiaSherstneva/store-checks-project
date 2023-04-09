@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class CheckWriter {
     static String path = "D:" + File.separator + "work" + File.separator + "repository"
-            + File.separator + "test-project" + File.separator + "archive" + File.separator;
+            + File.separator + "store-checks-project" + File.separator + "archive" + File.separator;
 
     public static void writeCheckToArchive(String check) {
         @SuppressWarnings({"RedundantExplicitVariableType", "unused"})

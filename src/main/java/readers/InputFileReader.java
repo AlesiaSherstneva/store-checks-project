@@ -7,7 +7,7 @@ import java.io.FileReader;
 public class InputFileReader {
     static StringBuilder result;
     static String path = "D:" + File.separator + "work" + File.separator + "repository" + File.separator
-            + "test-project" + File.separator + "src" + File.separator + "main" + File.separator
+            + "store-checks-project" + File.separator + "src" + File.separator + "main" + File.separator
             + "resources" + File.separator;
 
     public static String[] readFile(String fileName) {
