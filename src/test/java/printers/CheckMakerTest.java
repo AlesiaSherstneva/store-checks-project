@@ -9,26 +9,25 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CheckMakerTest {
-    List<Product> productList;
-    Map<Integer, Integer> shopping;
-    ProductsFactory productsFactory;
-
-    double total = 98.17, totalDiscount;
+public class CheckMakerTest {
+    private final List<Product> productList;
 
     public CheckMakerTest() {
         productList = new ArrayList<>();
 
-        shopping = new HashMap<>();
+        Map<Integer, Integer> shopping = new HashMap<>();
         shopping.put(11, 5);
         shopping.put(13, 8);
 
-        productsFactory = new ProductsFactory();
+        ProductsFactory productsFactory = new ProductsFactory();
         productList.addAll(productsFactory.getSupplies(shopping));
     }
 
     @Test
-    void getCheckTest() {
+    public void getCheckTest() {
+        double total = 98.17;
+        double totalDiscount = 0;
+
         StringBuilder testCheck = new CheckMaker().getCheck(productList, total, totalDiscount);
 
         assertNotNull(testCheck);

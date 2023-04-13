@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class InputFileReaderTest {
+public class InputFileReaderTest {
     @Test
-    void readFileTest() {
+    public void readFileTest() {
         InputFileReader.path = InputFileReader.path.replaceAll("main", "test");
 
         String[] input = InputFileReader.readFile("input.txt");

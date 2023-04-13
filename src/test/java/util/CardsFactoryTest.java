@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CardsFactoryTest {
-    CardImpl cardInList;
-    CardImpl cardNotInList;
+public class CardsFactoryTest {
+    private CardImpl cardInList;
+    private CardImpl cardNotInList;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         cardInList = new CardImpl.Builder()
                 .withId(1)
                 .withNumber(1234)
@@ -23,7 +23,7 @@ class CardsFactoryTest {
     }
 
     @Test
-    void getAllCards() {
+    public void getAllCards() {
         assertTrue(CardsFactory.getAllCards().contains(cardInList));
         assertFalse(CardsFactory.getAllCards().contains(cardNotInList));
     }

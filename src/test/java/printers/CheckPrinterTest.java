@@ -15,7 +15,7 @@ public class CheckPrinterTest {
     private String testCheck;
     private Map<Integer, Integer> shopping;
 
-    double price, discount;
+    private double price, discount;
 
     public CheckPrinterTest() {
         printer = new CheckPrinter();

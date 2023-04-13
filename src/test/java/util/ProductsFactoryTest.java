@@ -8,26 +8,34 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductsFactoryTest {
-    Map<Integer, Integer> shopping;
+public class ProductsFactoryTest {
+    private Map<Integer, Integer> shopping;
+    private ProductsFactory productsFactory;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        Random random = new Random();
+
         shopping = new LinkedHashMap<>();
-        shopping.put(5, 1);
-        shopping.put(1, 5);
-        shopping.put(10, 3);
+        while (shopping.keySet().size() != 3) {
+            shopping.put(random.nextInt(12) + 1, random.nextInt(9) + 1);
+        }
+
+        productsFactory = new ProductsFactory();
     }
 
     @Test
-    void getSuppliesTest() {
-        ProductsFactory productsFactory = new ProductsFactory();
+    public void getSuppliesTest() {
         List<Product> productList = productsFactory.getSupplies(shopping);
+
         assertEquals(3, productList.size());
-        assertEquals(ProductName.CHICKEN, productList.get(0).getProductName());
-        assertEquals(5, productList.get(1).getCount());
+        for (Product product : productList) {
+            assertInstanceOf(ProductName.class, product.getProductName());
+            assertEquals(product.getCount(), shopping.get(product.getProductName().ordinal() + 1));
+        }
     }
 }

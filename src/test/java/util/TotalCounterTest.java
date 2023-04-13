@@ -11,21 +11,22 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TotalCounterTest {
-    List<Product> productList;
+public class TotalCounterTest {
+    private List<Product> productList;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         Map<Integer, Integer> shopping = new LinkedHashMap<>();
         shopping.put(5, 7);
         shopping.put(7, 5);
         shopping.put(10, 2);
+
         productList = new ArrayList<>();
         productList.addAll(new ProductsFactory().getSupplies(shopping));
     }
 
     @Test
-    void countTotalSum() {
+    public void countTotalSum() {
         assertEquals(93.87, TotalCounter.countTotalSum(productList));
     }
 }

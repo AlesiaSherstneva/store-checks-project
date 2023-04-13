@@ -30,7 +30,7 @@ public class CheckWriterTest {
     }
 
     @Test
-    void writeCheckToArchiveTest() {
+    public void writeCheckToArchiveTest() {
         shopping.put(random.nextInt(12) + 1, random.nextInt(20) + 1);
         shopping.put(random.nextInt(12) + 1, random.nextInt(30) + 1);
         String testCheck = new CheckPrinter().printCheck(shopping, random.nextBoolean());
@@ -43,7 +43,7 @@ public class CheckWriterTest {
     }
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
         try {
             FileUtils.cleanDirectory(file);
             @SuppressWarnings("unused") boolean delete = file.delete();
