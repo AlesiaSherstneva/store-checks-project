@@ -11,9 +11,6 @@ jacoco {
 
 group 'by.myshop'
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
 repositories {
     mavenCentral()
 }
@@ -26,9 +23,9 @@ dependencyManagement {
 
 dependencies {
     testImplementation 'commons-io:commons-io:2.11.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testImplementation 'com.ginsberg:junit5-system-exit:1.1.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
 
 shadowJar {
@@ -73,7 +70,13 @@ jacocoTestCoverageVerification {
     }
 }
 
+task copyJar(type: Copy) {
+    from 'build/libs/CheckRunner.jar'
+    into '/'
+}
+
 tasks.build.dependsOn tasks.shadowJar
+tasks.build.dependsOn tasks.copyJar
 
 test {
     useJUnitPlatform()
